@@ -1,0 +1,357 @@
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Circular Navigation - Demo 1 | Codrops</title>
+		<meta name="description" content="Circular Navigation Styles - Building a Circular Navigation with CSS Transforms | Codrops " />
+		<meta name="keywords" content="css transforms, circular navigation, round navigation, circular menu, tutorial" />
+		<meta name="author" content="Sara Soueidan for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/component1.css') }}" />
+		<script src="{{ url_for('static', filename='js/modernizr-2.6.2.min.js') }}"></script>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7243260-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body style="font-family: Gabriola;font-size: large;font-weight: bold;background-image: url(https://www.rmit.edu.au/media/public-site-media-production/rmit-images/college-of-dsc-images/DSC_HiRes-1220x732.jpg);background-repeat: no-repeat;background-size: cover">
+<div >
+    <div class="col-md-offset-3 col-md-6">
+<div class="panel-body">
+<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    </button>
+                    <h4 style="color: black" class="modal-title">
+                        Categories
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="msht-title">
+            <h4 style="color: black">
+                Apps
+            </h4>
+        </div>
+        <ul>
+
+                <li>
+                    <a href="/cat/books-reference/?l=en">
+                        Books &amp; Reference
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/business/?l=en">
+                        Business
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/comics/?l=en">
+                        Comics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/communication/?l=en">
+                        Communication
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/education/?l=en">
+                        Education
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/entertainment/?l=en">
+                        Entertainment
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/finance/?l=en">
+                        Finance
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/health-fitness/?l=en">
+                        Health &amp; Fitness
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/libraries-demo/?l=en">
+                        Libraries &amp; Demo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/lifestyle/?l=en">
+                        Lifestyle
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/live-wallpaper/?l=en">
+                        Live Wallpaper
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/media-video/?l=en">
+                        Media &amp; Video
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/medical/?l=en">
+                        Medical
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/music-audio/?l=en">
+                        Music &amp; Audio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/news-magazines/?l=en">
+                        News &amp; Magazines
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/personalization/?l=en">
+                        Personalization
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/photography/?l=en">
+                        Photography
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/productivity/?l=en">
+                        Productivity
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/religious/?l=en">
+                        Religious
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/shopping/?l=en">
+                        Shopping
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/social/?l=en">
+                        Social
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/sports/?l=en">
+                        Sports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/tools/?l=en">
+                        Tools
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/transportation/?l=en">
+                        Transportation
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/travel-local/?l=en">
+                        Travel &amp; Local
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/weather/?l=en">
+                        Weather
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/widgets/?l=en">
+                        Widgets
+                    </a>
+                </li>
+
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div class="msht-title">
+            <h4 style="color: black">
+                Games
+            </h4>
+        </div>
+        <ul>
+
+                <li>
+                    <a href="/cat/action/?l=en">
+                        Action
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/adventure/?l=en">
+                        Adventure
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/arcade/?l=en">
+                        Arcade
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/board/?l=en">
+                        Board
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/casual/?l=en">
+                        Casual
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/educational/?l=en">
+                        Educational
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/family/?l=en">
+                        Family
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/music/?l=en">
+                        Music
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/puzzle/?l=en">
+                        Puzzle
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/racing/?l=en">
+                        Racing
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/role-playing/?l=en">
+                        Role Playing
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/simulation/?l=en">
+                        Simulation
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/sports-game/?l=en">
+                        Sports
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/strategy/?l=en">
+                        Strategy
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/trivia/?l=en">
+                        Trivia
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cat/word/?l=en">
+                        Word
+                    </a>
+                </li>
+
+        </ul>
+    </div>
+</div>
+</div>
+            </div>
+    </div>
+    </div>
+</div>
+<!-- Start Nav Structure -->
+				<button class="cn-button" id="cn-button"style="color: black !important;">+</button>
+				<div style="color: black " class="cn-wrapper" id="cn-wrapper">
+				    <ul>
+				      <li><a href="/about"><span class="glyphicon glyphicon-user"></span></a></li>
+				      <li><a href="/categories"><span class="glyphicon glyphicon-th-list"></span></a></li>
+				      <li><a href="/"><span class="icon-home"></span></a></li>
+				      <li><a href="/search"><span class="icon-search"></span></a></li>
+				      <li><a href="/contact"><span class="icon-envelope-alt"></span></a></li>
+				     </ul>
+				</div>
+				<div id="cn-overlay" class="cn-overlay"></div>
+				<!-- End Nav Structure -->
+
+
+
+		<script src="{{ url_for('static', filename='js/polyfills.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/demo1.js') }}"></script>
+
+</body>
+</html>
