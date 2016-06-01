@@ -146,7 +146,7 @@ def application(app_name):
     apps = soup.findAll('div', {"class" : "col-sm-4"})
 
 
-    print category,version,size,install_number
+
 
 
     return render_template('app.html')
