@@ -53,10 +53,10 @@ def search():
             return result
         url=search(name)
         html=urllib.urlopen(url)
-        soup=bs(html)
+        soup=bs(html, 'lxml')
         apps=soup.find_all('div',{"class":"msht-app"})
-        print type(apps)
-        print len(apps)
+        #print type(apps)
+        #print len(apps)
         apps=soup.findAll('div',{"class":"msht-app"})
         imgs=[i.find('img')['src'] for i in apps]
 
@@ -74,14 +74,28 @@ def search():
         prices=[i.contents[0].rsplit()[0] for i in prices]
         #print prices
         links=["https://cafebazaar.ir"+i.find('a')['href'].rsplit()[0] for i in apps]
+
+        new_links = []
+        for link in links:
+
+            position = link.find('app/')
+            position2 = link.find('?')
+
+            new_links.append(link[position+4:position2-1])
+
+
+
+
+
+
         #print links
         #print names[0].encode('utf-8')
         #names,prices,links,imgs =====>inast:D
         dic = {}
-        print len(imgs),len(prices),len(links),len(names)
+        #print len(imgs),len(prices),len(links),len(names)
         for i in range(len(imgs)):
-            dic[imgs[i]] = (names[i], prices[i], links[i])
-        print dic
+            dic[imgs[i]] = (names[i], prices[i], new_links[i])
+        #print dic
         return render_template('results.html',data_dic = dic)
 
     return render_template('search.html')
@@ -112,6 +126,30 @@ def guide():
 @app.route('/results')
 def results():
     return render_template('results.html')
+
+@app.route('/application/<app_name>')
+def application(app_name):
+
+    url="https://cafebazaar.ir/app/" + app_name + "/?l=fa"
+    html=urllib.urlopen(url)
+    soup=bs(html, 'lxml')
+
+    apps = soup.findAll('img',{"class":"app-img"})
+    img = apps[0]['src']                                             #get image from cafe bazar
+
+    apps = soup.findAll('div', {"class" : "app-name"})
+    name = apps[0].find('h1').contents[0]                            #get app-name from cafe bazar
+
+    apps = soup.findAll('div', {"class" : "dev"})
+    co_name = apps[0].find('span').contents[0]
+
+    apps = soup.findAll('div', {"class" : "col-sm-4"})
+
+
+    print category,version,size,install_number
+
+
+    return render_template('app.html')
 
 
 if __name__ == '__main__':

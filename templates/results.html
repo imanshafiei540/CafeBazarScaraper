@@ -31,21 +31,40 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
+    <style>
+     @font-face {
+         font-family: 'MyFont';
+         src: url({{ url_for('static', filename='font/Far_Curves.ttf') }});
+     }
+        .thumbnail{
+     border:none !important;
+     background: transparent !important;
+     box-shadow:none !important;
+  }
+    </style>
 
 </head>
-<body style="background-color: aliceblue ;!important;">
+<body style="font-family:MyFont;font-weight:bold;background-color: white; !important;background-image: url(http://4.bp.blogspot.com/-15QSSRC9bvU/UDHtTTeJqOI/AAAAAAAAAMk/yb0zJmH8Epk/s1600/6.png);background-repeat: no-repeat;background-size: cover">
+
+
     <div class="container">
-        <div class="row">
+        <header style="font-family: Aparajita" class="header">
+            <h1>Results for apps</h1>
+            <h5>Iran University of Science and Technology</h5>
+        </header>
+        <div style="padding-top: 5%" class="row">
             {% for item in data_dic %}
-            <a href="{{data_dic[item][2]}}">
-            <div class="col-md-3">
-                <div class="col-md-6">
-                <img width="100px" height="100px" src="{{ item }}" class="thumbnail">
-                    </div>
-                <div class="col-md-6">
-                <p>{{data_dic[item][0]}}</p>
+            <a href="/application/{{data_dic[item][2]}}">
+            <div style="margin-bottom: 5% " class="col-md-3">
+
+                <div style="text-align:right;border-right: thin solid black;" class="col-md-6">
+                <p style="padding-bottom: 35%">{{data_dic[item][0]}}</p>
                 <p>{{data_dic[item][1]}}</p>
 
+
+                    </div>
+                    <div class="col-md-6">
+                <img width="100px" height="100px" src="{{ item }}" class="thumbnail">
                     </div>
             </div>
                 </a>
@@ -53,6 +72,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
         </div>
     </div>
+
+
 <!-- Start Nav Structure -->
 				<button class="cn-button" id="cn-button"style="color: black !important;">+</button>
 				<div style="color: black " class="cn-wrapper" id="cn-wrapper">
