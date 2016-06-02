@@ -143,13 +143,23 @@ def application(app_name):
     apps = soup.findAll('div', {"class" : "dev"})
     co_name = apps[0].find('span').contents[0]
 
-    apps = soup.findAll('div', {"class" : "col-sm-4"})
+    apps = soup.findAll('span', {"class" : "pull-right"})
+    category = apps[5].find('span').contents[0]
+    number_of_install = apps[6].find('span').contents[0]
+    size = apps[7].contents[2]
+    version = apps[8].contents[0]
+
+    dic = {}
+    dic[img] = (name,co_name,category,number_of_install,size,version)
+
+    apps = soup.findAll('div', {"class" : "rtl"})
+    print len(apps)
+    experesions = apps[1].findAll('p')
+    print (experesions)
 
 
 
-
-
-    return render_template('app.html')
+    return render_template('app.html', data_app = dic,img = img,ex = experesions)
 
 
 if __name__ == '__main__':
