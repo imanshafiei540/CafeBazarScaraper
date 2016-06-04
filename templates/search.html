@@ -36,7 +36,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <body style="background-image: url(http://www.yourbusybee.com/wp-content/uploads/2015/10/design.png);background-repeat: no-repeat;background-size: cover">
     <header style="text-align: center;padding-top: 15%;" class="header">
         <p style="padding-bottom: 25px;font-family: Gabriola;font-size: 55px;font-width:bold;color: black" >Search in Cafe Bazar</p>
-        <form method="post" action="">
+        <form method="post" action="{{url_for('showResult',page=0)}}">
             <div class="col-md-offset-4 col-md-3">
             <input class="form-control input-lg" type="text" name="name" value="">
             </div>
