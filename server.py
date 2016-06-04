@@ -206,6 +206,67 @@ def search():
 def categories():
     return render_template('category.html')
 
+@app.route('/cat/<cat>/?l=en&p=<page>',methods=["GET","POST"])
+def showCat(cat,page):
+    name=cat
+    if cat not in ['word','trivia','strategy','sports-game','simulation','role-playing','racing','puzzle','music','family','educational','casual','board','arcade','adventure','action']:
+        url="https://cafebazaar.ir/lists/"+cat+"-new-apps/?l=en&partial=true&p="+page
+    else:
+        url="https://cafebazaar.ir/lists/"+cat+"-new-games/?l=en&partial=true&p="+page
+    def urlEncodeNonAscii(b):
+        return re.sub('[\x80-\xFF]', lambda c: '%%%02x' % ord(c.group(0)), b)
+
+    def iriToUri(iri):
+        parts= urlparse.urlparse(iri)
+        return urlparse.urlunparse(
+            part.encode('idna') if parti==1 else urlEncodeNonAscii(part.encode('utf-8'))
+            for parti, part in enumerate(parts)
+        )
+    #print url
+    html=urllib.urlopen(url)
+    soup=bs(html, 'lxml')
+    bs()
+    apps=soup.find_all('div',{"class":"msht-app"})
+    #print type(apps)
+    #print len(apps)
+    apps=soup.findAll('div',{"class":"msht-app"})
+    imgs=[i.find('img')['src'] for i in apps]
+
+    #img= apps[0].find('img')
+    #print img['src']
+    names=[i.find('div',{"class":"msht-app-name"}).find('span') for i in apps]
+    names=[i.contents[0] for i in names]
+    #print names[0]
+    #msht-app-price
+    #print names[0].contents[0].encode('utf-8')
+    tmp=[" ".join(i.rsplit()) for i in names]
+    names=tmp
+    #print names
+    prices=[i.find('div',{"class":"msht-app-price"}).find('span') for i in apps]
+    prices=[i.contents[0].rsplit()[0] for i in prices]
+    #print prices
+    links=["https://cafebazaar.ir"+i.find('a')['href'].rsplit()[0] for i in apps]
+
+    new_links = []
+    for link in links:
+
+        position = link.find('app/')
+        position2 = link.find('?')
+
+        new_links.append(link[position+4:position2-1])
+    #print links
+    #print names[0].encode('utf-8')
+    #names,prices,links,imgs =====>inast:D
+    dic = {}
+    #print len(imgs),len(prices),len(links),len(names)
+    for i in range(len(imgs)):
+        dic[imgs[i]] = (names[i], prices[i], new_links[i])
+    #print dic
+    return render_template('catresult.html',data_dic = dic, p=page , name=name)
+
+
+
+
 @app.route('/contact')
 def contaact():
     return render_template('contact.html')
@@ -251,7 +312,7 @@ def application(app_name):
     dic = {}
     dic[img] = (name,co_name,category,number_of_install,size,version)
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
     apps = soup.findAll('div', {"class" : "rtl"})
     print len(apps)
     experesions = apps[1].findAll('p')
@@ -265,7 +326,7 @@ def application(app_name):
 
 
     return render_template('app.html', data_app = dic,img = img,ex = experesions ,change=changes)
-=======
+#=======
     apps = soup.findAll('div', {"class" : " rtl "})
     exp = apps[0].find('p').contents[0]
     print exp
@@ -273,7 +334,7 @@ def application(app_name):
 
 
     return render_template('app.html', data_app = dic,img = img,ex = exp)
->>>>>>> 752810dd36c15144a2a5a7f4c9ffabe1f3bf63f4
+#>>>>>>> 752810dd36c15144a2a5a7f4c9ffabe1f3bf63f4
 
 
 if __name__ == '__main__':
