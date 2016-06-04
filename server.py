@@ -50,7 +50,7 @@ def showResult(page):
             result="https://cafebazaar.ir/search/?q="+fkey+"&l=fa&partial=true&p="+page
             return result
         url=search(name,page)
-        print url
+        #print url
         html=urllib.urlopen(url)
         soup=bs(html, 'lxml')
         bs()
@@ -237,10 +237,15 @@ def application(app_name):
     print len(apps)
     experesions = apps[1].findAll('p')
     print (experesions)
+    changes=soup.findAll('div',{"class" : "col-sm-12"})
+    ch= changes[1].findAll('li')
+    changes=[]
+    for i in ch:
+        changes+=i.contents
+    print "done"
 
 
-
-    return render_template('app.html', data_app = dic,img = img,ex = experesions)
+    return render_template('app.html', data_app = dic,img = img,ex = experesions ,change=changes)
 
 
 if __name__ == '__main__':
