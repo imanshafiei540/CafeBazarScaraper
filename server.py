@@ -10,6 +10,9 @@ import requests
 from selenium import webdriver
 import mechanize
 import urllib
+import re, urlparse
+
+
 
 
 
@@ -23,8 +26,21 @@ def index():
 
 @app.route('/search&p=<page>',methods=['GET','POST'])
 def showResult(page):
+
+    def urlEncodeNonAscii(b):
+        return re.sub('[\x80-\xFF]', lambda c: '%%%02x' % ord(c.group(0)), b)
+
+    def iriToUri(iri):
+        parts= urlparse.urlparse(iri)
+        return urlparse.urlunparse(
+            part.encode('idna') if parti==1 else urlEncodeNonAscii(part.encode('utf-8'))
+            for parti, part in enumerate(parts)
+        )
+
+
     if request.method == 'POST':
         name = request.form['name']
+        name = iriToUri(name)
         #first test
         '''html=urllib.urlopen(url)
         soup = bs(html)
@@ -102,9 +118,10 @@ def showResult(page):
 def search():
 
 
-
     if request.method == 'POST':
         name = request.form['name']
+        name = urlEncodeNonAscii(name)
+        print name
         #first test
         '''html=urllib.urlopen(url)
         soup = bs(html)
@@ -127,10 +144,11 @@ def search():
                 fkey+=i
                 if(i!=keys[-1]):
                     fkey+="+"
-            result="https://cafebazaar.ir/search/?q="+fkey+"&l=fa&partial=true&p=0"
+            result="https://cafebazaar.ir/search/?q=" + fkey + "&l=fa&partial=true&p=0"
+
             return result
         url=search(name)
-        print url
+
 
         html=urllib.urlopen(url)
         soup=bs(html, 'lxml')
@@ -233,6 +251,7 @@ def application(app_name):
     dic = {}
     dic[img] = (name,co_name,category,number_of_install,size,version)
 
+<<<<<<< HEAD
     apps = soup.findAll('div', {"class" : "rtl"})
     print len(apps)
     experesions = apps[1].findAll('p')
@@ -246,6 +265,15 @@ def application(app_name):
 
 
     return render_template('app.html', data_app = dic,img = img,ex = experesions ,change=changes)
+=======
+    apps = soup.findAll('div', {"class" : " rtl "})
+    exp = apps[0].find('p').contents[0]
+    print exp
+
+
+
+    return render_template('app.html', data_app = dic,img = img,ex = exp)
+>>>>>>> 752810dd36c15144a2a5a7f4c9ffabe1f3bf63f4
 
 
 if __name__ == '__main__':
