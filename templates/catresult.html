@@ -1,0 +1,108 @@
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Circular Navigation - Demo 1 | Codrops</title>
+		<meta name="description" content="Circular Navigation Styles - Building a Circular Navigation with CSS Transforms | Codrops " />
+		<meta name="keywords" content="css transforms, circular navigation, round navigation, circular menu, tutorial" />
+		<meta name="author" content="Sara Soueidan for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/component1.css') }}" />
+		<script src="{{ url_for('static', filename='js/modernizr-2.6.2.min.js') }}"></script>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7243260-2']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <style>
+     @font-face {
+         font-family: 'MyFont';
+         src: url({{ url_for('static', filename='font/Far_Curves.ttf') }});
+     }
+        .thumbnail{
+     border:none !important;
+     background: transparent !important;
+     box-shadow:none !important;
+  }
+    </style>
+
+</head>
+<body style="font-family:MyFont;font-weight:bold;background-color: white; !important;background-image: url(http://4.bp.blogspot.com/-15QSSRC9bvU/UDHtTTeJqOI/AAAAAAAAAMk/yb0zJmH8Epk/s1600/6.png);background-repeat: no-repeat;background-size: cover">
+
+
+    <div class="container">
+        <header style="font-family: Aparajita" class="header">
+            <h1>Results for apps</h1>
+            <h5>Iran University of Science and Technology</h5>
+        </header>
+        <div style="padding-top: 5%" class="row">
+            {% for item in data_dic %}
+            <a href="/application/{{data_dic[item][2]}}">
+            <div style="margin-bottom: 5% " class="col-md-3">
+
+                <div style="text-align:right;border-right: thin solid black;" class="col-md-6">
+                <p style="padding-bottom: 35%">{{data_dic[item][0]}}</p>
+                <p>{{data_dic[item][1]}}</p>
+
+
+                    </div>
+                    <div class="col-md-6">
+                <img width="100px" height="100px" src="{{ item }}" class="thumbnail">
+                    </div>
+            </div>
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% set next=p|int +24 -%}
+    {% set next=next|string -%}
+    {% set pre=p|int -24 -%}
+    {% set pre=pre|string -%}
+
+    <div id="next" style="margin: 50px" >
+        {% if data_dic|length >23 %}
+            <a style="float: right" href="{{url_for('showCat',page=next,cat=name)}}"  class="btn btn-primary btnNext">NEXT</a>
+        {% endif %}
+
+        {% if p|int !=0 %}
+            <a style="float: left" href="{{url_for('showCat',page=pre,cat=name)}}"  class="btn btn-primary btnNext">PREVIOUS</a>
+        {% endif %}
+
+<!-- Start Nav Structure -->
+				<button class="cn-button" id="cn-button"style="color: black !important;">+</button>
+				<div style="color: black " class="cn-wrapper" id="cn-wrapper">
+				    <ul>
+				      <li><a href="/about"><span class="glyphicon glyphicon-user"></span></a></li>
+                      <li><a href="/categories"><span class="glyphicon glyphicon-th-list"></span></a></li>
+				      <li><a href="/"><span class="icon-home"></span></a></li>
+				      <li><a href="/search"><span class="icon-search"></span></a></li>
+					  <li><a href="/contact"><span class="icon-envelope-alt"></span></a></li>
+				     </ul>
+				</div>
+				<div id="cn-overlay" class="cn-overlay"></div>
+				<!-- End Nav Structure -->
+
+
+		<script src="{{ url_for('static', filename='js/polyfills.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/demo1.js') }}"></script>
+
+</body>
+</html>

@@ -212,7 +212,7 @@ def showCat(cat,page):
     if cat not in ['word','trivia','strategy','sports-game','simulation','role-playing','racing','puzzle','music','family','educational','casual','board','arcade','adventure','action']:
         url="https://cafebazaar.ir/lists/"+cat+"-new-apps/?l=en&partial=true&p="+page
     else:
-        url="https://cafebazaar.ir/lists/"+cat+"-new-games/?l=en&partial=true&p="+page
+        url="https://cafebazaar.ir/lists/new-"+cat+"-games/?l=en&partial=true&p="+page
     def urlEncodeNonAscii(b):
         return re.sub('[\x80-\xFF]', lambda c: '%%%02x' % ord(c.group(0)), b)
 
